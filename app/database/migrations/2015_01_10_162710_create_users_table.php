@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration {
 			$table->string('email')->unique();
 			$table->string('password', 60);
 			$table->string('remember_token', 100)->nullable();
-			$table->string('avatar_id')->unsigned();
+			$table->integer('avatar_id')->unsigned();
 			$table->boolean('activado')->default(false);
 
 			$table->timestamps();

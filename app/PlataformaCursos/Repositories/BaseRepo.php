@@ -16,4 +16,9 @@ abstract class BaseRepo {
         return $this->model->find($id);
     }
 
+    public function all()
+    {
+        return $this->model->all();
+    }
+
 }
