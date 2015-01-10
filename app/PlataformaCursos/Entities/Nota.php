@@ -1,9 +1,9 @@
 <?php namespace PlataformaCursos\Entities;
 
 
-class Tema extends \Eloquent {
+class Nota extends \Eloquent {
 
-    protected $table = 'temas';
+    protected $table = 'notas';
     protected $fillable = [];
     protected $perPage = 8;
 
