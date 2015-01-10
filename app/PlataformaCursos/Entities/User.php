@@ -1,4 +1,4 @@
-<?php
+<?php namespace PlataformaCursos\Entities;
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
