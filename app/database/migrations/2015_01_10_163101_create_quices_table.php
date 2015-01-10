@@ -16,6 +16,13 @@ class CreateQuicesTable extends Migration {
 		Schema::create('quices', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('nombre');
+			$table->float('minimo_puntaje');
+			$table->string('mensaje_bienvenida');
+			$table->string('mensaje_aprobo');
+			$table->string('mensaje_reprobado');
+
 			$table->timestamps();
 		});
 	}

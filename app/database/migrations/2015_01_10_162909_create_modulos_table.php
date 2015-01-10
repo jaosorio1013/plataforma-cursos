@@ -16,6 +16,10 @@ class CreateModulosTable extends Migration {
 		Schema::create('modulos', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('nombre');
+			$table->integer('imagen_id')->unsigned();
+
 			$table->timestamps();
 		});
 	}

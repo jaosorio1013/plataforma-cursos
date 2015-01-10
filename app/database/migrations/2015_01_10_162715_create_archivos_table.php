@@ -16,6 +16,10 @@ class CreateArchivosTable extends Migration {
 		Schema::create('archivos', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('path')->unique();
+			$table->enum('tipo', ['archivo', 'imagen', 'video']);
+
 			$table->timestamps();
 		});
 	}

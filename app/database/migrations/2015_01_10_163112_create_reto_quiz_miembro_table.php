@@ -16,6 +16,14 @@ class CreateRetoQuizMiembroTable extends Migration {
 		Schema::create('reto_quiz_miembro', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->integer('reto_id')->index();
+			$table->integer('curso_id')->index();
+			$table->integer('miembro_id')->index();
+			$table->boolean('activado')->default(false);
+
+			$table->float('puntos');
+
 			$table->timestamps();
 		});
 	}

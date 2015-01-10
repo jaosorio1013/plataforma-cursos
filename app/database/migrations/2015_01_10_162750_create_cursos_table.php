@@ -16,6 +16,14 @@ class CreateCursosTable extends Migration {
 		Schema::create('cursos', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('nombre');
+			$table->string('slug')->unique();
+			$table->float('valor')->unsigned();
+			$table->integer('imagen_id')->unsigned();
+			$table->integer('video_id')->unsigned();
+			$table->boolean('activado')->default(false);
+
 			$table->timestamps();
 		});
 	}

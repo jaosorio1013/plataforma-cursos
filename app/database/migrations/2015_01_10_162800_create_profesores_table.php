@@ -16,6 +16,12 @@ class CreateProfesoresTable extends Migration {
 		Schema::create('profesores', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('nombre');
+			$table->string('slug')->unique();
+			$table->integer('avatar_id')->unsigned();
+			$table->enum('estdo', ['ofline', 'online']);
+
 			$table->timestamps();
 		});
 	}

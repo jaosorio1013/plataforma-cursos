@@ -16,6 +16,16 @@ class CreatePreguntasTable extends Migration {
 		Schema::create('preguntas', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->string('pregunta');
+			$table->string('respuesta1');
+			$table->string('respuesta2');
+			$table->string('respuesta3');
+			$table->string('respuesta4');
+			$table->tinyInteger('respuesta_correcta')->default(1);
+
+			$table->integer('quiz_id')->unsigned();
+
 			$table->timestamps();
 		});
 	}

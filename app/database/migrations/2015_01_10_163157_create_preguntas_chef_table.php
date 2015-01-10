@@ -16,6 +16,11 @@ class CreatePreguntasChefTable extends Migration {
 		Schema::create('preguntas_chef', function(Blueprint $table)
 		{
 			$table->increments('id');
+
+			$table->integer('usuario_id')->unsigned();
+			$table->integer('profesor_id')->unsigned();
+			$table->string('pregunta', 200);
+
 			$table->timestamps();
 		});
 	}
