@@ -20,7 +20,7 @@ class CreateProfesoresTable extends Migration {
 			$table->string('nombre');
 			$table->string('slug')->unique();
 			$table->integer('avatar_id')->unsigned();
-			$table->enum('estdo', ['ofline', 'online']);
+			$table->enum('estado', ['ofline', 'online']);
 
 			$table->timestamps();
 		});

@@ -3,7 +3,7 @@
 
 class Profesor extends \Eloquent {
 
-    protected $table = 'profesor';
+    protected $table = 'profesores';
     protected $fillable = [];
     protected $perPage = 8;
 

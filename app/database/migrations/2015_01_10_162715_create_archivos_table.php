@@ -17,7 +17,7 @@ class CreateArchivosTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->string('path')->unique();
+			$table->string('path');//->unique();
 			$table->enum('tipo', ['archivo', 'imagen', 'video']);
 
 			$table->timestamps();
