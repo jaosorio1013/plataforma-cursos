@@ -11,15 +11,21 @@
     <div class="container">
         <h1>Últimos cursos</h1>
 
-        <table class="table table-striped">
-            <tr>
-                <th>Nombre</th>
-            </tr>
-            @foreach($cursos AS $curso)
-                <tr>
-                    <td>{{ $curso->nombre }}</td>
-                </tr>
-            @endforeach
-        </table>
+        <div class="container marketing">
+            <div class="row">
+                @foreach($cursos AS $index => $curso)
+                    @if($index % 4 == 0)
+                        <div class="clearfix"></div>
+                    @endif
+                    <div class="col-lg-3">
+                        <img class="img-thumbnail" src="{{ $curso->imagen->path }}" alt="Generic placeholder image">
+                        <h2>{{ $curso->nombre }}</h2>
+                        <p>{{ $curso->descripcion }}</p>
+                        <p>$ {{ $curso->valor }}</p>
+                        <p><a class="btn btn-default" href="#" role="button">Comprar »</a></p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 @stop

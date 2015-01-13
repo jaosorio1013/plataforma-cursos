@@ -19,6 +19,7 @@ class CreateCursosTable extends Migration {
 
 			$table->string('nombre');
 			$table->string('slug')->unique();
+			$table->text('descripcion');
 			$table->float('valor')->unsigned();
 			$table->integer('imagen_id')->unsigned();
 			$table->integer('video_id')->unsigned();

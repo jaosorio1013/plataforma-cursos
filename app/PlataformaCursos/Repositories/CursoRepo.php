@@ -9,4 +9,9 @@ class CursoRepo extends BaseRepo {
         return new Curso;
     }
 
+    public function listaCursos()
+    {
+        return Curso::with(['imagen', 'retos'])->get();
+    }
+
 }

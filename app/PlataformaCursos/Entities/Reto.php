@@ -7,4 +7,9 @@ class Reto extends \Eloquent {
     protected $fillable = [];
     protected $perPage = 8;
 
+    public function cursosReto()
+    {
+        return $this->belongsToMany('PlataformaCursos\Entities\Curso');
+    }
+
 }

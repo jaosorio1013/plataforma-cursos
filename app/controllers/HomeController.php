@@ -13,7 +13,7 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		$cursos = $this->cursoRepo->all();
+		$cursos = $this->cursoRepo->listaCursos();
 
 		return View::make('home', compact('cursos'));
 	}

@@ -7,4 +7,14 @@ class Curso extends \Eloquent {
     protected $fillable = [];
     protected $perPage = 8;
 
+    public function imagen()
+    {
+        return $this->belongsTo('PlataformaCursos\Entities\Archivo');
+    }
+
+    public function retosCurso()
+    {
+        return $this->belongsToMany('PlataformaCursos\Entities\Reto');
+    }
+
 }
