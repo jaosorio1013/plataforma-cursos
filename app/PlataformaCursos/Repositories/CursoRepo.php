@@ -11,7 +11,7 @@ class CursoRepo extends BaseRepo {
 
     public function listaCursos()
     {
-        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->where('activado', true)->get();
+        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->get();//->where('activado', true)->get();
 
         foreach($listaCursos AS $curso)
         {
@@ -36,25 +36,30 @@ class CursoRepo extends BaseRepo {
 
     public function cursoPorSlug($slug)
     {
-        $curso = Curso::where('slug', $slug)->with('imagen', 'retosCurso.leccion.modulo.imagen')->first();
+        $curso = Curso::with('imagen', 'retosCurso.leccion.modulo.imagen')
+            ->where('slug', $slug)->where('activado', true)->first();
         $modulos = [];
 
-        foreach($curso->retosCurso As $reto)
+        if($curso)
         {
-            $idModulo = $reto->leccion->modulo->id;
-            $nombreModulo = $reto->leccion->modulo->nombre;
-            $imagenModulo = $reto->leccion->modulo->imagen->path;
-            $idLeccion = $reto->leccion->id;
-            $nombreLeccion = $reto->leccion->nombre;
+            foreach($curso->retosCurso As $reto)
+            {
+                $idModulo = $reto->leccion->modulo->id;
+                $nombreModulo = $reto->leccion->modulo->nombre;
+                $imagenModulo = $reto->leccion->modulo->imagen->path;
+                $idLeccion = $reto->leccion->id;
+                $nombreLeccion = $reto->leccion->nombre;
 
-            $modulos[$idModulo]['nombre'] = $nombreModulo;
-            $modulos[$idModulo]['imagen'] = $imagenModulo;
-            $modulos[$idModulo]['lecciones'][$idLeccion] = $nombreLeccion;
+                $modulos[$idModulo]['nombre'] = $nombreModulo;
+                $modulos[$idModulo]['imagen'] = $imagenModulo;
+                $modulos[$idModulo]['lecciones'][$idLeccion] = $nombreLeccion;
+            }
+
+            $curso->modulos = array_values($modulos);
+            return $curso;
         }
 
-        $curso->modulos = array_values($modulos);
-
-        return $curso;
+        return false;
     }
 
 }

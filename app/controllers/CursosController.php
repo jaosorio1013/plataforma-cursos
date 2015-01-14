@@ -14,8 +14,14 @@ class CursosController extends BaseController {
 	public function detalleCurso($slug)
 	{
 		$curso = $this->cursoRepo->cursoPorSlug($slug);
-
-		return View::make('cursos/detalle-curso', compact('curso'));
+		if($curso)
+		{
+			return View::make('cursos/detalle-curso', compact('curso'));
+		}
+		else
+		{
+			echo 'Curso no activado';
+		}
 	}
 
 }
