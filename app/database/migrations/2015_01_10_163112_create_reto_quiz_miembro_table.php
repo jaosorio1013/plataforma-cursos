@@ -17,9 +17,8 @@ class CreateRetoQuizMiembroTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->integer('reto_id')->index();
-			$table->integer('curso_id')->index();
-			$table->integer('miembro_id')->index();
+			$table->integer('reto_curso_id')->unsigned();
+			$table->integer('miembro_id')->unsigned();
 			$table->boolean('activado')->default(false);
 
 			$table->float('puntos');

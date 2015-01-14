@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use PlataformaCursos\Entities\RetoCursoMiembro;
 
 class CreateRetoCursoMiembroTable extends Migration {
 
@@ -17,10 +16,8 @@ class CreateRetoCursoMiembroTable extends Migration {
 		{
 			$table->increments('id');
 
-			$table->integer('reto_id')->index();
-			$table->integer('curso_id')->index();
-			$table->integer('miembro_id')->index();
-			$table->boolean('activado')->default(false);
+			$table->integer('reto_curso_id')->unsigned();
+			$table->integer('miembro_id')->unsigned();
 
 			$table->boolean('visitado')->default(false);
 			$table->boolean('aprobado')->default(false);
