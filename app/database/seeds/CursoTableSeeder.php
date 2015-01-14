@@ -28,6 +28,7 @@ class CursoTableSeeder extends Seeder {
 			Curso::create([
 				'nombre' => $nombreCurso,
 				'slug' => \Str::slug($nombreCurso),
+				'descripcion' => $faker->text(),
 				'valor' => $faker->randomFloat($decimals = 2, $min = 20, $max = 50),
 				'imagen_id' => $imagen->id,
 				'video_id' => $video->id,

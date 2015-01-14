@@ -7,4 +7,9 @@ class Modulo extends \Eloquent {
     protected $fillable = [];
     protected $perPage = 8;
 
+    public function imagen()
+    {
+        return $this->belongsTo('PlataformaCursos\Entities\Archivo');
+    }
+
 }

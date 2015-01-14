@@ -11,7 +11,7 @@ class CursoRepo extends BaseRepo {
 
     public function listaCursos()
     {
-        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->get();
+        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->where('activado', true)->get();
 
         foreach($listaCursos AS $curso)
         {
@@ -21,7 +21,7 @@ class CursoRepo extends BaseRepo {
         return $listaCursos;
     }
 
-    public function modulosCurso($retosCurso, $limite = 0)
+    public function modulosCurso($retosCurso)
     {
         $datosModulos = array();
 
@@ -32,6 +32,29 @@ class CursoRepo extends BaseRepo {
         }
 
         return $datosModulos;
+    }
+
+    public function cursoPorSlug($slug)
+    {
+        $curso = Curso::where('slug', $slug)->with('imagen', 'retosCurso.leccion.modulo.imagen')->first();
+        $modulos = [];
+
+        foreach($curso->retosCurso As $reto)
+        {
+            $idModulo = $reto->leccion->modulo->id;
+            $nombreModulo = $reto->leccion->modulo->nombre;
+            $imagenModulo = $reto->leccion->modulo->imagen->path;
+            $idLeccion = $reto->leccion->id;
+            $nombreLeccion = $reto->leccion->nombre;
+
+            $modulos[$idModulo]['nombre'] = $nombreModulo;
+            $modulos[$idModulo]['imagen'] = $imagenModulo;
+            $modulos[$idModulo]['lecciones'][$idLeccion] = $nombreLeccion;
+        }
+
+        $curso->modulos = array_values($modulos);
+
+        return $curso;
     }
 
 }

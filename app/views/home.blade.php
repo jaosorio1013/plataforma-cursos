@@ -34,7 +34,7 @@
                             @endif
                         </ul>
                         </p>
-                        <p><a class="btn btn-default" href="#" role="button">Comprar »</a></p>
+                        <p><a class="btn btn-default" href="{{ route('detalle_curso', [$curso->slug]) }}" role="button">Comprar »</a></p>
                     </div>
                 @endforeach
             </div>

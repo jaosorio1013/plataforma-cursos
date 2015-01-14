@@ -12,8 +12,8 @@ class RetoCursoTableSeeder extends Seeder {
 
 		foreach(range(1, 10) as $index)
 		{
-			$min = $faker->numberBetween(1, 20);
-			$max = $faker->numberBetween(30, 50);
+			$min = $faker->numberBetween(1, 40);
+			$max = $faker->numberBetween(60, 100);
 
 			foreach(range($min, $max) AS $indexRetoCurso)
 			{
