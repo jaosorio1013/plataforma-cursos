@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('TipoRetoTableSeeder');
 		$this->call('ProfesorTableSeeder');
 		$this->call('RetoTableSeeder');
+		$this->call('RetoCursoTableSeeder');
 	}
 
 }

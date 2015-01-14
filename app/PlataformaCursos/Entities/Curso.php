@@ -14,7 +14,7 @@ class Curso extends \Eloquent {
 
     public function retosCurso()
     {
-        return $this->belongsToMany('PlataformaCursos\Entities\Reto');
+        return $this->belongsToMany('PlataformaCursos\Entities\Reto', 'reto_curso', 'curso_id', 'reto_id');
     }
 
 }

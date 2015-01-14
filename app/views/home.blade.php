@@ -22,6 +22,18 @@
                         <h2>{{ $curso->nombre }}</h2>
                         <p>{{ $curso->descripcion }}</p>
                         <p>$ {{ $curso->valor }}</p>
+                        <p>
+                        <ul>
+                            @foreach($curso->modulos AS $modulo)
+                                <li>
+                                    {{ $modulo }}
+                                </li>
+                            @endforeach
+                            @if($curso->modulosAdicionales)
+                                <li>y {{ $curso->modulosAdicionales }} modulos mas...</li>
+                            @endif
+                        </ul>
+                        </p>
                         <p><a class="btn btn-default" href="#" role="button">Comprar »</a></p>
                     </div>
                 @endforeach

@@ -9,7 +9,12 @@ class Reto extends \Eloquent {
 
     public function cursosReto()
     {
-        return $this->belongsToMany('PlataformaCursos\Entities\Curso');
+        return $this->belongsToMany('PlataformaCursos\Entities\Curso', 'reto_curso', 'reto_id', 'curso_id');
+    }
+
+    public function leccion()
+    {
+        return $this->belongsTo('PlataformaCursos\Entities\Leccion');
     }
 
 }

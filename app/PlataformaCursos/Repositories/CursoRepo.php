@@ -11,7 +11,27 @@ class CursoRepo extends BaseRepo {
 
     public function listaCursos()
     {
-        return Curso::with(['imagen', 'retos'])->get();
+        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->get();
+
+        foreach($listaCursos AS $curso)
+        {
+            $curso->modulos = $this->modulosCurso($curso->retosCurso);
+        }
+
+        return $listaCursos;
+    }
+
+    public function modulosCurso($retosCurso, $limite = 0)
+    {
+        $datosModulos = array();
+
+        foreach($retosCurso AS $reto)
+        {
+            $modulo = $reto->leccion->modulo;
+            $datosModulos[$modulo->id] = $modulo->nombre;
+        }
+
+        return $datosModulos;
     }
 
 }
