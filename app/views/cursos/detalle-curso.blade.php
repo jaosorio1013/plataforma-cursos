@@ -6,6 +6,9 @@
         <p>
             <img class="img-thumbnail" src="{{ $curso->imagen->path }}" alt="Generic placeholder image">
         </p>
+        <p>
+            {{ $curso->descripcion }}
+        </p>
 
         <div class="container marketing">
             <div class="row">
