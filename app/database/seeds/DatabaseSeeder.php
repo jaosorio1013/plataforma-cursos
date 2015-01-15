@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('ProfesorTableSeeder');
 		$this->call('RetoTableSeeder');
 		$this->call('RetoCursoTableSeeder');
+
+		$this->call('UserTableSeeder');
+		$this->call('RetoCursoMiembroTableSeeder');
 	}
 
 }

@@ -62,4 +62,9 @@ class CursoRepo extends BaseRepo {
         return false;
     }
 
+    public function clasePorSlug($slug)
+    {
+        return false;
+    }
+
 }

@@ -1,14 +1,14 @@
 <?php
 
-use PlataformaCursos\Repositories\CursoRepo;
+use PlataformaCursos\Repositories\UserRepo;
 
 class AuthController extends BaseController {
 
-	protected $cursoRepo;
+	protected $userRepo;
 
-	public function __construct(CursoRepo $cursoRepo)
+	public function __construct(UserRepo $userRepo)
 	{
-		$this->cursoRepo = $cursoRepo;
+		$this->userRepo = $userRepo;
 	}
 
 	public function index()
@@ -18,7 +18,20 @@ class AuthController extends BaseController {
 
 	public function loginUsuario()
 	{
+		$datosLogin = [
+			'email' => Input::only('email'),
+			'password' => Input::only('password'),
+			'activado' => true,
+		];
 
+		if(Auth::attempt($datosLogin))
+		{
+			return 'acediste';
+		}
+		else
+		{
+			return 'No accediste';
+		}
 	}
 
 }
