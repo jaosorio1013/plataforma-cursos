@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Cursos</a>
+            <a class="navbar-brand" href="{{ route('home') }}">Cursos</a>
         </div>
         <div class="navbar-collapse collapse">
             @if (Auth::check())
@@ -51,7 +51,7 @@
                     </li>
                 </ul>--}}
             @else
-                {{--{{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class' => 'navbar-form navbar-right']) }}
+                {{ Form::open(['route' => 'login', 'method' => 'POST', 'role' => 'form', 'class' => 'navbar-form navbar-right']) }}
                 @if(Session::has('login_error'))
                     <span class="label label-danger">Credenciales no válidas</span>
                 @endif
@@ -67,7 +67,7 @@
                     </label>
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>
-                {{ Form::close() }}--}}
+                {{ Form::close() }}
             @endif
         </div><!--/.navbar-collapse -->
     </div>

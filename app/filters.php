@@ -85,3 +85,13 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+/**
+ * Filtro para verificar si el usuario es administrador
+ */
+Route::filter('is_admin', function(){
+	if(!is_admin())
+	{
+		return Redirect::to('/login');
+	}
+});

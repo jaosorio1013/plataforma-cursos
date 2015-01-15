@@ -11,9 +11,9 @@ class AuthController extends BaseController {
 		$this->userRepo = $userRepo;
 	}
 
-	public function index()
+	public function login()
 	{
-		return View::make('usuarios/login');
+		return View::make('admin/login');
 	}
 
 	public function loginUsuario()

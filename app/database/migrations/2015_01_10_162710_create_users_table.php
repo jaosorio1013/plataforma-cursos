@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration {
 			$table->string('remember_token', 100)->nullable();
 			$table->integer('avatar_id')->unsigned();
 			$table->boolean('activado')->default(false);
+			$table->enum('rol', ['admin', 'estudiante']);
 
 			$table->timestamps();
 		});
