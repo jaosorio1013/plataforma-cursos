@@ -1,37 +1,51 @@
 <?php
 
-use PlataformaCursos\Repositories\UserRepo;
-
 class AuthController extends BaseController {
 
-	protected $userRepo;
-
-	public function __construct(UserRepo $userRepo)
-	{
-		$this->userRepo = $userRepo;
-	}
-
-	public function login()
+	public function loginAdmin()
 	{
 		return View::make('admin/login');
 	}
 
-	public function loginUsuario()
+	public function ingresoAdmin()
 	{
-		$datosLogin = [
-			'email' => Input::only('email'),
-			'password' => Input::only('password'),
-			'activado' => true,
-		];
-
-		if(Auth::attempt($datosLogin))
+		if($this->ingresoUsuario())
 		{
-			return 'acediste';
+			return 'Acceso Admin';
 		}
 		else
 		{
-			return 'No accediste';
+			return 'No acceso';
 		}
+	}
+
+	public function ingreso()
+	{
+		if($this->ingresoUsuario())
+		{
+			return 'Acceso Usuario';
+		}
+		else
+		{
+			return 'No acceso';
+		}
+	}
+
+	private function ingresoUsuario()
+	{
+		$data = Input::only(['email', 'password', 'remember']);
+		$datosLogin = [
+			'email' => $data['email'],
+			'password' => $data['password'],
+			'activado' => true,
+		];
+
+		return Auth::attempt($datosLogin);
+
+		/*if(Auth::attempt($credentials, $data['remember']))
+		{
+			return Redirect::back();
+		}*/
 	}
 
 }

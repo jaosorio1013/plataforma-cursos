@@ -27,19 +27,19 @@
 
 <div class="container">
 
-    <form class="form-signin" method="post" action="/login">
+    {{ Form::open(['route' => 'login_admin', 'method' => 'post', 'role' => 'form', 'novalidate', 'class' => 'form-signin']) }}
         <h2 class="form-signin-heading">Ingreso</h2>
         <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        {{ Form::text('email', null, ['class' => 'form-control', 'id' => 'inputEmail']) }}
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        {{ Form::password('password', ['class' => 'form-control', 'id' => 'inputPassword']) }}
         <div class="checkbox">
             <label>
                 <input type="checkbox" value="remember-me"> Recordar
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
-    </form>
+    {{ Form::close() }}
 
 </div>
 

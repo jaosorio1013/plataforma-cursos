@@ -59,7 +59,8 @@
                     {{ Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail']) }}
                 </div>
                 <div class="form-group">
-                    {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
+                    {{ Form::text('password', null, array('class' => 'form-control')) }}
+                    {{--{{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}--}}
                 </div>
                 <div class="checkbox">
                     <label class="remember-me">

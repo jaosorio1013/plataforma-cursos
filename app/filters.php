@@ -92,6 +92,6 @@ Route::filter('csrf', function()
 Route::filter('is_admin', function(){
 	if(!is_admin())
 	{
-		return Redirect::to('/login');
+		return Redirect::to('/login-admin');
 	}
 });
