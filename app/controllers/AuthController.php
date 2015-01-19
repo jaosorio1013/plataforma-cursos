@@ -7,31 +7,33 @@ class AuthController extends BaseController {
 		return View::make('admin/login');
 	}
 
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::route('home');
+	}
+
 	public function ingresoAdmin()
 	{
-		if($this->ingresoUsuario())
+		if($this->ingresoUsuario(true))
 		{
-			return 'Acceso Admin';
+			return Redirect::to('admin');
 		}
-		else
-		{
-			return 'No acceso';
-		}
+
+		return Redirect::back()->with('login_error', 1);
 	}
 
 	public function ingreso()
 	{
 		if($this->ingresoUsuario())
 		{
-			return 'Acceso Usuario';
+			return Redirect::back();
 		}
-		else
-		{
-			return 'No acceso';
-		}
+
+		return Redirect::back()->with('login_error', 1);
 	}
 
-	private function ingresoUsuario()
+	private function ingresoUsuario($validarAdmin = false)
 	{
 		$data = Input::only(['email', 'password', 'remember']);
 		$datosLogin = [
@@ -40,12 +42,12 @@ class AuthController extends BaseController {
 			'activado' => true,
 		];
 
-		return Auth::attempt($datosLogin);
-
-		/*if(Auth::attempt($credentials, $data['remember']))
+		if($validarAdmin)
 		{
-			return Redirect::back();
-		}*/
+			$datosLogin['rol'] = 'admin';
+		}
+
+		return Auth::attempt($datosLogin);
 	}
 
 }
