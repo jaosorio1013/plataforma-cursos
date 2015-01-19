@@ -3,14 +3,10 @@
 require(__DIR__.'/routes/accesoComun.php');
 
 
-Route::group(['before' => 'is_not_admin'], function(){
-    Route::get('login-admin', ['as' => 'login_admin', 'uses' => 'AuthController@loginAdmin']);
-    Route::post('login-admin', ['as' => 'login_admin', 'uses' => 'AuthController@ingresoAdmin']);
-});
-
-
 Route::group(['before' => 'gest'], function(){
     Route::post('login', ['as' => 'login', 'uses' => 'AuthController@ingreso']);
+    Route::get('login-admin', ['as' => 'login_admin', 'uses' => 'AuthController@loginAdmin']);
+    Route::post('login-admin', ['as' => 'login_admin', 'uses' => 'AuthController@ingresoAdmin']);
 });
 
 
