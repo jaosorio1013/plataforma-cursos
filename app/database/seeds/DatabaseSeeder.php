@@ -12,8 +12,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		$this->call('CursoTableSeeder');
-		$this->call('ModuloTableSeeder');
-		$this->call('LeccionTableSeeder');
+		$this->call('CategoriaRetoTableSeeder');
 		$this->call('TipoRetoTableSeeder');
 		$this->call('ProfesorTableSeeder');
 		$this->call('RetoTableSeeder');

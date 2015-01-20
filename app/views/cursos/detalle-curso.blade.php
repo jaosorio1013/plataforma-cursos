@@ -12,17 +12,17 @@
 
         <div class="container marketing">
             <div class="row">
-                @foreach($curso->modulos AS $index => $modulo)
+                @foreach($curso->categorias AS $index => $categoria)
                     @if($index % 4 == 0)
                         <div class="clearfix"></div>
                     @endif
                     <div class="col-lg-3">
-                        <img class="img-thumbnail" src="{{ $modulo['imagen'] }}" alt="{{ $modulo['nombre'] }}">
-                        <h2>{{ $modulo['nombre'] }}</h2>
+                        <img class="img-thumbnail" src="{{ $categoria['imagen'] }}" alt="{{ $categoria['nombre'] }}">
+                        <h2>{{ $categoria['nombre'] }}</h2>
                         <p>
                             <ul>
-                                @foreach($modulo['lecciones'] AS $leccion)
-                                    <li>{{ $leccion }}</li>
+                                @foreach($categoria['retos'] AS $reto)
+                                    <li>{{ $reto }}</li>
                                 @endforeach
                             </ul>
                         </p>

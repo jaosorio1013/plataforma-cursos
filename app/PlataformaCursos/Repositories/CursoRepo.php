@@ -11,52 +11,48 @@ class CursoRepo extends BaseRepo {
 
     public function listaCursos()
     {
-        //$listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->get();//->where('activado', true)->get();
-        $listaCursos = Curso::with(['imagen', 'retosCurso.leccion.modulo'])->where('activado', true)->get();
+        $listaCursos = Curso::with(['imagen', 'retosCurso.categoriaReto'])->where('activado', true)->get();
 
         foreach($listaCursos AS $curso)
         {
-            $curso->modulos = $this->modulosCurso($curso->retosCurso);
+            $curso->categorias = $this->categoriasCuro($curso->retosCurso);
         }
 
         return $listaCursos;
     }
 
-    public function modulosCurso($retosCurso)
+    public function categoriasCuro($retosCurso)
     {
-        $datosModulos = array();
+        $datosCategorias = array();
 
         foreach($retosCurso AS $reto)
         {
-            $modulo = $reto->leccion->modulo;
-            $datosModulos[$modulo->id] = $modulo->nombre;
+            $datosCategorias[$reto->categoria_reto_id] = $reto->categoriaReto->nombre;
         }
 
-        return $datosModulos;
+        return $datosCategorias;
     }
 
     public function cursoPorSlug($slug)
     {
-        $curso = Curso::with('imagen', 'retosCurso.leccion.modulo.imagen')
+        $curso = Curso::with('imagen', 'retosCurso.categoriaReto.imagen')
             ->where('slug', $slug)->where('activado', true)->first();
-        $modulos = [];
+        $categorias = [];
 
         if($curso)
         {
             foreach($curso->retosCurso As $reto)
             {
-                $idModulo = $reto->leccion->modulo->id;
-                $nombreModulo = $reto->leccion->modulo->nombre;
-                $imagenModulo = $reto->leccion->modulo->imagen->path;
-                $idLeccion = $reto->leccion->id;
-                $nombreLeccion = $reto->leccion->nombre;
+                $idCategoria = $reto->categoriaReto->id;
+                $nombreCategoria = $reto->categoriaReto->nombre;
+                $imagenCategoria = $reto->categoriaReto->imagen->path;
 
-                $modulos[$idModulo]['nombre'] = $nombreModulo;
-                $modulos[$idModulo]['imagen'] = $imagenModulo;
-                $modulos[$idModulo]['lecciones'][$idLeccion] = $nombreLeccion;
+                $categorias[$idCategoria]['nombre'] = $nombreCategoria;
+                $categorias[$idCategoria]['imagen'] = $imagenCategoria;
+                $categorias[$idCategoria]['retos'][$reto->id] = $reto->nombre;
             }
 
-            $curso->modulos = array_values($modulos);
+            $curso->categorias = array_values($categorias);
             return $curso;
         }
 

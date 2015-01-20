@@ -2,26 +2,27 @@
 
 // Composer: "fzaninotto/faker": "v1.3.0"
 use Faker\Factory as Faker;
-use PlataformaCursos\Entities\Leccion;
+use PlataformaCursos\Entities\CategoriaReto;
 use PlataformaCursos\Entities\Archivo;
 
-class LeccionTableSeeder extends Seeder {
+class CategoriaRetoTableSeeder extends Seeder {
 
 	public function run()
 	{
 		$faker = Faker::create();
 
-		foreach(range(1, 50) as $index)
+		foreach(range(1, 10) as $index)
 		{
 			$imagen = Archivo::create([
 				'tipo' => 'imagen',
 				'path' => $faker->imageUrl($width = 640, $height = 480),
 			]);
 
-			Leccion::create([
+			CategoriaReto::create([
 				'nombre' => $faker->name,
+				'descripcion' => $faker->text(),
 				'imagen_id' => $imagen->id,
-				'modulo_id' => $faker->numberBetween($min = 1, $max = 10),
+				'activado' => $faker->randomElement([true, false]),
 			]);
 		}
 	}

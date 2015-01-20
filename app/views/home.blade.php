@@ -24,13 +24,13 @@
                         <p>$ {{ $curso->valor }}</p>
                         <p>
                         <ul>
-                            @foreach($curso->modulos AS $modulo)
+                            @foreach($curso->categorias AS $categoria)
                                 <li>
-                                    {{ $modulo }}
+                                    {{ $categoria }}
                                 </li>
                             @endforeach
-                            @if($curso->modulosAdicionales)
-                                <li>y {{ $curso->modulosAdicionales }} modulos mas...</li>
+                            @if($curso->categoriasAdicionales)
+                                <li>y {{ $curso->categoriasAdicionales }} categorias mas...</li>
                             @endif
                         </ul>
                         </p>

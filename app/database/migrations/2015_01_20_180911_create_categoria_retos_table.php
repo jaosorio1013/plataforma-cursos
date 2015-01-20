@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use PlataformaCursos\Entities\Modulo;
 
-class CreateModulosTable extends Migration {
+class CreateCategoriaRetosTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,12 +12,14 @@ class CreateModulosTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('modulos', function(Blueprint $table)
+		Schema::create('categoria_retos', function(Blueprint $table)
 		{
 			$table->increments('id');
 
 			$table->string('nombre');
+			$table->mediumText('descripcion');
 			$table->integer('imagen_id')->unsigned();
+			$table->boolean('activado')->default(true);
 
 			$table->timestamps();
 		});
@@ -32,7 +33,7 @@ class CreateModulosTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('modulos');
+		Schema::drop('categoria_retos');
 	}
 
 }

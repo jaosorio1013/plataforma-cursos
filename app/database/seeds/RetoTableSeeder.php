@@ -15,7 +15,7 @@ class RetoTableSeeder extends Seeder {
 			Reto::create([
 				'nombre' => $faker->name,
 				'tipo_reto_id' => $faker->numberBetween($min = 1, $max = 10),
-				'leccion_id' => $faker->numberBetween($min = 1, $max = 30),
+				'categoria_reto_id' => $faker->numberBetween($min = 1, $max = 10),
 				'profesor_id' => $faker->numberBetween($min = 1, $max = 10),
 				'texto' => $faker->text(),
 			]);

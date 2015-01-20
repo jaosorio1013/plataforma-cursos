@@ -1,9 +1,9 @@
 <?php namespace PlataformaCursos\Entities;
 
 
-class Modulo extends \Eloquent {
+class CategoriaReto extends \Eloquent {
 
-    protected $table = 'modulos';
+    protected $table = 'categoria_retos';
     protected $fillable = [];
     protected $perPage = 8;
 

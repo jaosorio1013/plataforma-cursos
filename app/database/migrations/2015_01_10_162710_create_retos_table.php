@@ -18,7 +18,7 @@ class CreateRetosTable extends Migration {
 
 			$table->string('nombre');
 			$table->integer('tipo_reto_id')->unsigned()->default(1);
-			$table->integer('leccion_id')->unsigned();
+			$table->integer('categoria_reto_id')->unsigned();
 			$table->integer('profesor_id')->unsigned()->default(1);
 			$table->mediumText('texto');
 			$table->integer('imagen_id')->unsigned();
